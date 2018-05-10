@@ -1,6 +1,6 @@
 #1- Install the dependencies
-npm install
+- npm install
 
 #2- Run server
-npm start
+- npm start
 
