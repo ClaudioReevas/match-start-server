@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 });
 
 
+console.log("")
 
 app.get("/next", (req, res) => {
     //TODO You should consult this data in your DB and return two random elements        let match1 = Math.floor((Math.random() * 4));
