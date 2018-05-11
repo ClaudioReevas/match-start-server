@@ -20,7 +20,8 @@ app.get('/', (req, res) => {
 
 
 app.get("/next", (req, res) => {
-    //TODO You should consult this data in your DB and return two random elements        let match1 = Math.floor((Math.random() * 4));
+    //TODO You should consult this data in your DB and return two random elements        
+        let match1 = Math.floor((Math.random() * 4));
         let match2 = match1;
         while (match1 === match2) {
             match2 = Math.floor((Math.random() * 4));
