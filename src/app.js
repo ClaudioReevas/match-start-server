@@ -55,7 +55,7 @@ app.post("/vote", (req, res) => {
     
     if(id) {
         search(id,characters) 
-        res.status(200).json({error: 'id found'})
+        res.status(200).json({ok: 'ok'})
     }else if (!id) {
         res.status(400).json({error: 'id is required'})
     } else {
