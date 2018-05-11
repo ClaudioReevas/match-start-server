@@ -8,12 +8,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
+
 //TODO  Temporally we storage all data in this place  but you should change this for DB Query's
 let data = [];
 
 
 app.get('/', (req, res) => {
-    res.status(200).send("<h1>Match API!</h1>");
+    res.status(200).send("<h1>Conectado al puerto 3000</h1>");
 });
 
 
