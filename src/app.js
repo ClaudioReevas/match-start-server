@@ -7,7 +7,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-
+var path    = require("path");
+app.use('/js',express.static(__dirname + '/js'));
+app.use('/css', express.static(__dirname + '/css'));
 
 //TODO  Temporally we storage all data in this place  but you should change this for DB Query's
 let data = [];
@@ -17,7 +19,9 @@ app.get('/', (req, res) => {
     res.status(200).send("<h1>Conectado al puerto 3000</h1>");
 });
 
-
+app.get('/marvelmatch', function(req, res) {
+    res.sendFile(path.join(__dirname+'/index.html'));
+});
 
 app.get("/next", (req, res) => {
     //TODO You should consult this data in your DB and return two random elements        
