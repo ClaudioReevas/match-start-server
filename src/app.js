@@ -8,11 +8,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 
-const personajes = {
-    RECEIVE_CHARACTERS (state, { characters }) {
-      state.data = characters
-    }
-  }
 
 //TODO  Temporally we storage all data in this place  but you should change this for DB Query's
 let data = [];
@@ -25,12 +20,20 @@ app.get('/', (req, res) => {
 
 
 app.get("/next", (req, res) => {
-    //TODO You should consult this data in your DB and return two random elements
-    res.send({
-        first: data[0],
-        second: data[1],
-    })
-});
+    //TODO You should consult this data in your DB and return two random elements        let match1 = Math.floor((Math.random() * 4));
+        let match2 = match1;
+        while (match1 === match2) {
+            match2 = Math.floor((Math.random() * 4));
+            console.log("****MATCH****");
+            console.log("match 1: ", match1);
+            console.log("match 2: ", match2);
+            if (match1 === match2) {console.log("MATCH REPEAT")}
+        }
+        res.send({
+            first: data[match1],
+            second: data[match2],
+        })
+ });
 
 function search(nameKey, myArray){
     for (let i=0; i < myArray.length; i++) {
@@ -46,7 +49,7 @@ function search(nameKey, myArray){
 app.post("/vote", (req, res) => {
     //id of the item that the user chooses
     const {id} = req.body
-    var resultObject = search(1017100, characters);
+    var resultObject = search(id, characters);
     
     if(id) {
         search(id,characters) 
