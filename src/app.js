@@ -21,19 +21,20 @@ app.get('/', (req, res) => {
 
 app.get("/next", (req, res) => {
     //TODO You should consult this data in your DB and return two random elements        let match1 = Math.floor((Math.random() * 4));
-        let match2 = match1;
-        while (match1 === match2) {
-            match2 = Math.floor((Math.random() * 4));
-            console.log("****MATCH****");
-            console.log("match 1: ", match1);
+      //  let match2 = match1;
+      //  while (match1 === match2) {
+           // match2 = Math.floor((Math.random() * 4));
+            //console.log("****MATCH****");
+           // console.log("match 1: ", match1);
             console.log("match 2: ", match2);
             if (match1 === match2) {console.log("MATCH REPEAT")}
-        }
+        //}
         res.send({
             first: data[match1],
             second: data[match2],
         })
  });
+
 
 function search(nameKey, myArray){
     for (let i=0; i < myArray.length; i++) {
