@@ -2,12 +2,17 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const {characters} = require('./data/characters')
-
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
+
+const personajes = {
+    RECEIVE_CHARACTERS (state, { characters }) {
+      state.data = characters
+    }
+  }
 
 //TODO  Temporally we storage all data in this place  but you should change this for DB Query's
 let data = [];
@@ -27,12 +32,26 @@ app.get("/next", (req, res) => {
     })
 });
 
+function search(nameKey, myArray){
+    for (let i=0; i < myArray.length; i++) {
+        if (myArray[i].id === nameKey) {
+            console.log("FOUND: " + myArray[i].image);
+            myArray[i].likes=myArray[i].likes+1;
+            console.log("FOUND: " + myArray[i].likes);
+            return myArray[i];
+        }
+    }
+}
 //Vote for a element - increment this likes count and save this change into DB
 app.post("/vote", (req, res) => {
     //id of the item that the user chooses
     const {id} = req.body
-
-    if (!id) {
+    var resultObject = search(1017100, characters);
+    
+    if(id) {
+        search(id,characters) 
+        res.status(200).json({error: 'id found'})
+    }else if (!id) {
         res.status(400).json({error: 'id is required'})
     } else {
 
