@@ -10,10 +10,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 
 var path    = require("path");
-// app.use('/js',express.static(__dirname + '/js'));
-// app.use('/css', express.static(__dirname + '/css'));
-app.use("/styles", express.static(__dirname + '/styles'));
-app.use("/scripts", express.static(__dirname + '/scripts'));
+
 console.log(__dirname)
 
 // app.use(express.static( 'public/css'));
@@ -24,10 +21,6 @@ let data = [];
 
 app.get('/', (req, res) => {
     res.status(200).send("<h1>Conectado al puerto 3000</h1>");
-});
-
-app.get('/marvelmatch', function(req, res) {
-    res.sendFile(path.join(__dirname+'/index.html'));
 });
 
 app.get("/next", (req, res) => {
