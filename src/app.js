@@ -3,13 +3,20 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const {characters} = require('./data/characters')
 const app = express();
+const cors = require('cors')
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(cors());
 
 var path    = require("path");
-app.use('/js',express.static(__dirname + '/js'));
-app.use('/css', express.static(__dirname + '/css'));
+// app.use('/js',express.static(__dirname + '/js'));
+// app.use('/css', express.static(__dirname + '/css'));
+app.use("/styles", express.static(__dirname + '/styles'));
+app.use("/scripts", express.static(__dirname + '/scripts'));
+console.log(__dirname)
+
+// app.use(express.static( 'public/css'));
 
 //TODO  Temporally we storage all data in this place  but you should change this for DB Query's
 let data = [];
